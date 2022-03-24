@@ -26,11 +26,11 @@ body {
   margin-right: auto;
   margin-top: 5rem;
 }
-section {
+.main-card {
   border-radius: 1rem;
-  overflow: hidden;
   background-color: var(--Dark-blue);
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+  overflow: hidden;
 }
 .img-user {
   width: 50px;
@@ -73,8 +73,61 @@ h1 span {
   color: var(--Desaturated-blue);
   text-decoration: none;
 }
+
 .report {
+  border-radius: 1rem;
+  background-color: var(--Dark-blue);
+  margin-bottom: 4rem;
   padding: 1rem;
+  position: relative;
+}
+.report::before {
+  content: "";
+  display: block;
+  height: 70%;
+  left: 0;
+  right: 0;
+  border-radius: 1rem;
+  top: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+  position: absolute;
+}
+.report.Work::before {
+  background: url("./../assets/images/icon-work.svg");
+  background-color: var(--Light-red-work);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
+}
+.report.Play::before {
+  background: url("./../assets/images/icon-play.svg");
+  background-color: var(--Soft-blue-play);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
+}
+.report.Study::before {
+  background: url("./../assets/images/icon-study.svg");
+  background-color: var(--Light-red-study);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
+}
+.report.Exercise::before {
+  background: url("./../assets/images/icon-exercise.svg");
+  background-color: var(--Lime-green-exercise);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
+}
+.report.Social::before {
+  background: url("./../assets/images/icon-social.svg");
+  background-color: var(--Violet-social);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
+}
+.report.SelfCare::before {
+  background: url("./../assets/images/icon-self-care.svg");
+  background-color: var(--Soft-orange-self-care);
+  background-repeat: no-repeat;
+  background-position: right 1rem top -1rem;
 }
 .report-to {
   display: flex;
@@ -92,12 +145,12 @@ h2 {
 .time-mode {
   font-weight: 300;
   font-size: 2rem;
-  /* border: 1px solid red; */
 }
 .time-mode,
 .last-week-time {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  color: var(--Pale-Blue);
 }
 .attribution {
   font-size: 11px;

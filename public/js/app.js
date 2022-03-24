@@ -1,49 +1,56 @@
 const d = document;
-//Paso 1
-const xhr = new XMLHttpRequest(); /* Se instancia el objeto */
+const xhr = new XMLHttpRequest();
 const $reports = d.querySelectorAll(".report");
+const $main = d.querySelector("main");
 const $xhr = d.getElementById("xhr");
 const $fragment = d.createDocumentFragment();
-//Paso 2 - Se asigna el evento que se va a manipular, aqui va la lógica de prog
+
 xhr.addEventListener("readystatechange", (e) => {
-  if (xhr.readyState !== 4) return; //Validacion, si se ve el clg el objeto xhr se imprime 4 veces por los estados de la peticion,
-  //READY_STATE_UNINITIALIZED, READY_STATE_LOADING, READY_STATE_LOADED, READY_STATE_INTERACTIVE, READY_STATE_COMPLETE
-  //El primero no cuenta xd
-  //console.log(xhr);
-  //La callback solo se ejecuta cuando el readystate es !== 4, sino retorna nada
+  if (xhr.readyState !== 4) return;
 
   if (xhr.status >= 200 && xhr.status < 300) {
-    //Otra validacion xq solo importa los q estan bien, o sea los 200 -299
-    //console.log("éxito");
-    //console.log(xhr.responseText);
-    //$xhr.innerHTML = xhr.responseText;
     let json = JSON.parse(xhr.responseText);
-    //console.log(json);
-
+    console.log(json[5].title.replace(/ /g, ""));
     json.forEach((el) => {
-      const $li = document.createElement("li");
-      $li.innerHTML = `${el.title} -- ${el.timeframes.daily.current}`;
-      $fragment.appendChild($li);
+      //Creating elements and seetings properties
+      const $section = d.createElement("section");
+      // console.log(el.title.toString());
+      $section.classList.add("report", el.title.replace(/ /g, ""));
+      const $header = d.createElement("header");
+      $header.classList.add("report-to");
+      const $h2 = d.createElement("h2");
+      $h2.textContent = el.title;
+      const $img = d.createElement("img");
+      $img.classList.add("icon-ellipsis");
+      $img.setAttribute("src", "./assets/images/icon-ellipsis.svg");
+      $img.setAttribute("alt", "icon-ellipsis");
+      const $div = d.createElement("div");
+      $div.classList.add("time");
+      const $p1 = d.createElement("p");
+      $p1.classList.add("time-mode");
+      $p1.textContent = `${el.timeframes.weekly.current}hrs`;
+      const $p2 = d.createElement("p");
+      $p2.classList.add("last-week-time");
+      $p2.textContent = `Last Week - ${el.timeframes.weekly.previous}hrs`;
+
+      //Adding elements
+      $header.appendChild($h2);
+      $header.appendChild($img);
+      $div.appendChild($p1);
+      $div.appendChild($p2);
+      $section.appendChild($header);
+      $section.appendChild($div);
+
+      $fragment.appendChild($section);
     });
-
-    $xhr.appendChild($fragment);
-
-    console.log($reports);
-
-    // $work.children[0].firstElementChild.textContent = json[0].title;
-    // $work.children[1].firstElementChild.textContent = `${json[0].timeframes.weekly.current}hrs `;
-    // $work.children[1].lastElementChild.textContent = `Last Week - ${json[0].timeframes.weekly.previous}hrs `;
+    $main.appendChild($fragment);
   } else {
     //console.log("error");
     let message = xhr.statusText || "Ocurrió un error";
     $xhr.innerHTML = `Error ${xhr.status}: ${message}`;
   }
-
-  //console.log("Este mensaje cargará de cualquier forma");
 });
-//Paso 3 - Se abre la peticion
 
 xhr.open("GET", "./assets/data.json");
 
-//Paso 4 - Enviar la peticion
 xhr.send();
