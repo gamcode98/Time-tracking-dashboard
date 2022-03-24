@@ -1,0 +1,109 @@
+:root {
+  /* Colors */
+  /* Primary */
+  --Blue: hsl(246, 80%, 60%);
+  --Light-red-work: hsl(15, 100%, 70%);
+  --Soft-blue-play: hsl(195, 74%, 62%);
+  --Light-red-study: hsl(348, 100%, 68%);
+  --Lime-green-exercise: hsl(145, 58%, 55%);
+  --Violet-social: hsl(264, 64%, 52%);
+  --Soft-orange-self-care: hsl(43, 84%, 65%);
+  /* Neutral */
+  --Very-dark-blue: hsl(226, 43%, 10%);
+  --Dark-blue: hsl(235, 46%, 20%);
+  --Desaturated-blue: hsl(235, 45%, 61%);
+  --Pale-Blue: hsl(236, 100%, 87%);
+  --Atribution: hsl(228, 45%, 44%);
+  /* Font */
+  --FontFamily: "Rubik", sans-serif; /* - Weights: 300, 400, 500 */
+}
+body {
+  margin: 0;
+  font-family: var(--FontFamily);
+  background-color: var(--Very-dark-blue);
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+}
+section {
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--Dark-blue);
+  margin-bottom: 1rem;
+}
+.img-user {
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 50%;
+  border: 0.2rem solid var(--Pale-Blue);
+}
+
+.main-header {
+  background-color: var(--Blue);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: var(--Pale-Blue);
+}
+h1 span {
+  font-weight: 300;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+.report-mode {
+  padding: 1.5rem;
+}
+.time,
+.report-mode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.report-change {
+  color: var(--Desaturated-blue);
+  text-decoration: none;
+}
+.report {
+  padding: 1rem;
+}
+.report-to {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: var(--Pale-Blue);
+  font-weight: 500;
+}
+.time-mode {
+  font-weight: 300;
+  font-size: 2rem;
+  /* border: 1px solid red; */
+}
+.time-mode,
+.last-week-time {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--Atribution);
+}
