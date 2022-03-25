@@ -73,6 +73,9 @@ h1 span {
   color: var(--Desaturated-blue);
   text-decoration: none;
 }
+.report-change.isActive {
+  color: var(--Pale-Blue);
+}
 
 .report {
   border-radius: 1rem;
@@ -147,7 +150,7 @@ h2 {
   font-size: 2rem;
 }
 .time-mode,
-.last-week-time {
+.last-time {
   margin-top: 0;
   margin-bottom: 0.5rem;
   color: var(--Pale-Blue);
