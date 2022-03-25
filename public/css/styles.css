@@ -13,7 +13,7 @@
   --Dark-blue: hsl(235, 46%, 20%);
   --Desaturated-blue: hsl(235, 45%, 61%);
   --Pale-Blue: hsl(236, 100%, 87%);
-  --Atribution: hsl(228, 45%, 44%);
+  --Gradient: to left, hsl(6, 100%, 80%), hsl(335, 100%, 65%);
   /* Font */
   --FontFamily: "Rubik", sans-serif; /* - Weights: 300, 400, 500 */
 }
@@ -73,6 +73,7 @@ h1 span {
   color: var(--Desaturated-blue);
   text-decoration: none;
 }
+.report-change:hover,
 .report-change.isActive {
   color: var(--Pale-Blue);
 }
@@ -84,6 +85,7 @@ h1 span {
   padding: 1rem;
   position: relative;
 }
+
 .report::before {
   content: "";
   display: block;
@@ -138,6 +140,9 @@ h1 span {
   align-items: center;
   margin-bottom: 0.5rem;
 }
+.icon-ellipsis {
+  cursor: pointer;
+}
 h2 {
   margin-top: 0;
   margin-bottom: 0;
@@ -156,10 +161,89 @@ h2 {
   color: var(--Pale-Blue);
 }
 .attribution {
-  font-size: 11px;
+  font-size: 0.7rem;
   text-align: center;
+  color: var(--Pale-Blue);
+  margin-bottom: 1rem;
 }
 
 .attribution a {
-  color: var(--Atribution);
+  background-image: linear-gradient(var(--Gradient));
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  -ms-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  body {
+    width: 80%;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .main-card {
+    grid-row: 1/3;
+    margin-bottom: 0;
+  }
+  .main-header,
+  .report-mode {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .img-user {
+    width: 70px;
+    height: 70px;
+  }
+  .main-header {
+    padding-bottom: 5rem;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .report-change {
+    margin-bottom: 1.5rem;
+  }
+  .report {
+    padding: 1.5rem;
+  }
+  .report.Work,
+  .report.Play,
+  .report.Study {
+    grid-row: 1/2;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  .report.Exercise,
+  .report.Social,
+  .report.SelfCare {
+    grid-row: 2/3;
+    margin-bottom: 0;
+  }
+  .report::before {
+    height: 30%;
+  }
+  .report-to {
+    margin-bottom: 1.5rem;
+  }
+  .time-mode {
+    font-size: 2.5rem;
+  }
+  .time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
