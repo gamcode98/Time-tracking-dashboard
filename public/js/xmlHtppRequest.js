@@ -1,7 +1,6 @@
 const d = document;
 const xhr = new XMLHttpRequest();
 const $main = d.querySelector("main");
-const $xhr = d.getElementById("xhr");
 const $fragment = d.createDocumentFragment();
 const $reportsToChange = d.querySelectorAll(".report-change");
 let timeframe, json;
@@ -49,7 +48,8 @@ xhr.addEventListener("readystatechange", (e) => {
     $main.appendChild($fragment);
   } else {
     let message = xhr.statusText || "Ocurrió un error";
-    $xhr.innerHTML = `Error ${xhr.status}: ${message}`;
+    $main.classList.add("error");
+    $main.innerHTML = `Error ${xhr.status}: ${message}`;
   }
 
   const changingState = (time) => {
